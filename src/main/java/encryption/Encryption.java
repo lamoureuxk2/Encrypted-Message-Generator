@@ -12,8 +12,8 @@ import java.io.*;
  */
 public class Encryption {
 	
-	private static final String PRIVATE_KEY_FILENAME = "privatekey.txt";
-	private static final String PUBLIC_KEY_FILENAME = "publickey.txt";
+	private static final String PRIVATE_KEY_FILENAME = "privatekey.key";
+	private static final String PUBLIC_KEY_FILENAME = "publickey.key";
 	
 	
 	public static byte[] EncryptString(String string) {

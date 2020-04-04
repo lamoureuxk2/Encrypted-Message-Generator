@@ -11,8 +11,8 @@ import java.security.*;
  */
 public class KeyGenerator {
 	
-	private static final String PUBLIC_KEY_FILENAME = "publickey.txt";
-	private static final String PRIVATE_KEY_FILENAME = "privatekey.txt";
+	private static final String PUBLIC_KEY_FILENAME = "publickey.key";
+	private static final String PRIVATE_KEY_FILENAME = "privatekey.key";
 	
 	public static void main(String[] args) {
 		
