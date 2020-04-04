@@ -182,6 +182,11 @@
     			<version>2.13.1</version>
 		</dependency>
 
+		<dependency>
+  				<groupId>org.languagetool</groupId>
+ 				<artifactId>language-en</artifactId>
+ 				<version>4.9</version>
+		</dependency>
 
 
 

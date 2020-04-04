@@ -1,8 +1,14 @@
 package edu.bu.met.cs665;
 
-import edu.bu.met.cs665.example1.Person;
 import org.apache.log4j.Logger;
-// import org.apache.log4j.PropertyConfigurator;
+
+import java.io.IOException;
+import java.util.*;
+
+
+import org.languagetool.*;
+import org.languagetool.language.BritishEnglish;
+import org.languagetool.rules.*;
 
 public class Main {
 
@@ -15,30 +21,43 @@ public class Main {
    * @param args not used
    */
   public static void main(String[] args) {
+	  
+	  JLanguageTool langTool = new JLanguageTool(new BritishEnglish());
+	  for (Rule rule : langTool.getAllRules()) {
+	    if (!rule.isDictionaryBasedSpellingRule()) {
+	      langTool.disableRule(rule.getId());
+	    }
+	  }
+	  List<RuleMatch> matches = null;
+	try {
+		matches = langTool.check("A speling eror");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	  for (RuleMatch match : matches) {
+	    System.out.println("Potential typo at characters " +
+	        match.getFromPos() + "-" + match.getToPos() + ": " +
+	        match.getMessage());
+	    System.out.println("Suggested correction(s): " +
+	        match.getSuggestedReplacements());
+	  }
 
     // This configuration is for setting up the log4j properties file.
     // It is better to set this using java program arguments.
     // PropertyConfigurator.configure("log4j.properties");
 
     // Let us create an object of the Main class.
-    Main m = new Main();
+	/*
+	 * Main m = new Main();
+	 * 
+	 * logger.info(m.doIt());
+	 * 
+	 * logger.trace("Trace Message!"); logger.debug("Debug Message!");
+	 * logger.info("Info Message!"); logger.warn("Warn Message!");
+	 * logger.error("Error Message!"); logger.fatal("Fatal Message!");
+	 */
 
-    logger.info(m.doIt());
-
-    logger.trace("Trace Message!");
-    logger.debug("Debug Message!");
-    logger.info("Info Message!");
-    logger.warn("Warn Message!");
-    logger.error("Error Message!");
-    logger.fatal("Fatal Message!");
-
-  }
-
-
-
-  private String doIt() {
-    Person student = new Person("John", "Doe");
-    return student.getLastName() + ',' + student.getLastName();
-  }
+  }//end of main
 
 }
