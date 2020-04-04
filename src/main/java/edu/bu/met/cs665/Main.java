@@ -35,6 +35,7 @@ public class Main {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	
 	  for (RuleMatch match : matches) {
 	    System.out.println("Potential typo at characters " +
 	        match.getFromPos() + "-" + match.getToPos() + ": " +
