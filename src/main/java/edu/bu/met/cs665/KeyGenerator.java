@@ -3,6 +3,12 @@ package edu.bu.met.cs665;
 import java.io.*;
 import java.security.*;
 
+/**
+ * Much code was directly used from tutorial on java encryption 
+ * https://www.tutorialspoint.com/java_cryptography/java_cryptography_decrypting_data.htm
+ * @author lamoureuxk
+ *
+ */
 public class KeyGenerator {
 	
 	private static final String PUBLIC_KEY_FILENAME = "publickey.txt";
@@ -13,7 +19,7 @@ public class KeyGenerator {
 		//Creating KeyPair generator object
 		KeyPairGenerator keyPairGen = null;
 		try {
-			keyPairGen = KeyPairGenerator.getInstance("DSA");
+			keyPairGen = KeyPairGenerator.getInstance("RSA");
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
