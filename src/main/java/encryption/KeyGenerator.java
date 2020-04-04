@@ -1,4 +1,4 @@
-package edu.bu.met.cs665;
+package encryption;
 
 import java.io.*;
 import java.security.*;

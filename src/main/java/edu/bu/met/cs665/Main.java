@@ -23,6 +23,8 @@ public class Main {
   public static void main(String[] args) {
 	  
 	  JLanguageTool langTool = new JLanguageTool(new BritishEnglish());
+	  
+	  //Remove this loop to do more than spelling
 	  for (Rule rule : langTool.getAllRules()) {
 	    if (!rule.isDictionaryBasedSpellingRule()) {
 	      langTool.disableRule(rule.getId());

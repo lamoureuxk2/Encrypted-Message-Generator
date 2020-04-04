@@ -1,4 +1,4 @@
-package edu.bu.met.cs665;
+package encryption;
 
 import java.security.*;
 import javax.crypto.*;
@@ -12,9 +12,9 @@ import java.io.*;
  */
 public class Encryption {
 	
-	private static final String PUBLIC_KEY_FILENAME = "publickey.txt";
-	@SuppressWarnings("unused")
 	private static final String PRIVATE_KEY_FILENAME = "privatekey.txt";
+	private static final String PUBLIC_KEY_FILENAME = "publickey.txt";
+	
 	
 	public static byte[] EncryptString(String string) {
 		
@@ -94,7 +94,7 @@ public class Encryption {
 	}
 
 	/**
-	 * This tests the encypting and decrypting methods in this class
+	 * This tests the encrypting and decrypting methods in this class
 	 * @param args
 	 * @throws NoSuchAlgorithmException
 	 * @throws NoSuchPaddingException
