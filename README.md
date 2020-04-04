@@ -1,6 +1,6 @@
 # Implementation Description
 
-This application will generate emails with a unique template for 5 different categories of customer: Business; VIP; Returning; Frequest; and New.
+This application will generate emails with a unique template for 5 different categories of customer: Business; VIP; Returning; Frequest; and New. One class: EmailGenerationSystem, will function as an abstract factory (software pattern) that can create custom emails that are different depending on what subclass of customer they are going to. Each there will be one version of the method for generating emails per subclass of customer.
 
 There will be 9 total classes: One abstract class for customer; One subclass for each customer categorey; KeyGenerator, Encryption, and EmailGenerationSystem.
 
