@@ -1,16 +1,18 @@
 # Implementation Description
 
-This application will generate emails with a unique template for 5 different categories of customer: Business; VIP; Returning; Frequest; and New. One class: EmailGenerationSystem, will function as an abstract factory (software pattern) that can create custom emails that are different depending on what subclass of customer they are going to. Each there will be one version of the method for generating emails per subclass of customer.
+This application will generate emails with a unique template for 5 different categories of customer: Business; VIP; Returning; Frequest; and New. One class: EmailGenerationSystem, will function as an abstract factory that can create custom emails that are different depending on what subclass of customer they are going to. Each there will be one version of the method for generating emails per subclass of customer.
 
-There will be 9 total classes: One abstract class for customer; One subclass for each customer categorey; KeyGenerator, Encryption, and EmailGenerationSystem.
+There will be 10 total classes: One abstract class for customer; One subclass for each customer categorey; KeyGenerator, Encryption, and EmailGenerationSystem, and SpellChecker.
 
 The customer class will have a data field for first name, last name, and email address, represented by Strings. There will be standard getters and setters. There will also be a method for getting the full name.
 
-In this application, the classes for the 5 categories of customer will have no unique data fields or methods, they simply extend the base customer class.. The reason they are separated into 5 classes instead of having one class, despite the similarity, is because that was a requirement for the application. If this were not a requirement I would be inclined to just make one customer class with a data field representing the kind of customer. However, I can how future projects that use this code could benefit from having 5 subclasses made.
+In this application, the classes for the 5 categories of customer will have no unique data fields or methods, they simply extend the base customer class.. The reason they are separated into 5 classes instead of having one class, despite the similarity, is because that was a requirement for the application.
 
 The KeyGenerator class has a main that creates a java PublicKey and PrivateKey object that are saved as files. These Key files are included in the project and do not need to be produced again. In future iterations of the app, this class could be used to generate new keys.
 
 The Encryption class makes use of the Key files. There is a method for Encrypting a string and returning an encrypted byte array. There is a method for Decrypting a byte array and returning a String. 
+
+Spellchecker will have one method called isSpellchecked( String ) that returns a boolean: true if no spelling error, false otherwise. Another method called spellCheck( String) will display any errors detected. 
 
 The EmailGenerationSystem will have a method for generating an email that will take in a customer Object. This method will check what specific subclass of customer the argument is, and will call a respective method: there will be one method for each corresponding subclass that will generate an email with a corresponding template. 
 The EmailGenerationSystem class will have a String saved for Header, body, and footer; 5 of each, one for each subclass of customer. The method will then call another method, generateBody, that allows the user to add the text they want for the body. This method will ultimately return a String for the body. But before this, the generateBody will ask the user if they want to spell check the message, and if so, will run a spell check and allow the user to retype the message. Then the final message is returned back to the calling method. After this the user will be prompted for their name for the email signature.
