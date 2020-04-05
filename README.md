@@ -14,9 +14,10 @@ The Encryption class makes use of the Key files. There is a method for Encryptin
 
 Spellchecker will have one method called isSpellchecked( String ) that returns a boolean: true if no spelling error, false otherwise. Another method called spellCheck( String) will display any errors detected. 
 
-The EmailGenerationSystem will have a method for generating an email that will take in a customer Object. This method will check what specific subclass of customer the argument is, and will call a respective method: there will be one method for each corresponding subclass that will generate an email with a corresponding template. 
-The EmailGenerationSystem class will have a String saved for Header, body, and footer; 5 of each, one for each subclass of customer. The method will then call another method, generateBody, that allows the user to add the text they want for the body. This method will ultimately return a String for the body. But before this, the generateBody will ask the user if they want to spell check the message, and if so, will run a spell check and allow the user to retype the message. Then the final message is returned back to the calling method. After this the user will be prompted for their name for the email signature.
-The 3 parts of the email will be combined into one string, and then the user will be asked if they want the message encrypted. If so, it will be encrypted. 
+The EmailGenerationSystem class will  have a String saved for Header and footer; 5 of each, one for each subclass of customer.
+The EmailGenerationSystem will have a method for generating an email that will take in a customer Object, a string for email body and a string for sender name. This method will check what specific subclass of customer the argument is, and will call a respective method: there will be one method for each corresponding subclass that will generate an email with a corresponding template. The 3 parts of the email will be then combined into one string.
+
+The main will ask the user for the type of customer to email, then the sender's name, then the body of the email. The body will be run through a spellchecker and if errors are detected, the user will be informed and asked if they want to edit the message, they can choose to or skip. After this step, an instance of EmailGenerationSystem is used to generate an email. The user will be asked if they want to encrypt it and if they say yes, the email will be encrypted. The program ends.
 
 
 # Project Template
