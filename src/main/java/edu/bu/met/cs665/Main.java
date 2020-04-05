@@ -2,65 +2,97 @@ package edu.bu.met.cs665;
 
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
-import java.util.*;
+import customer.*;
 
+import java.io.BufferedInputStream;
+import java.util.Scanner;
+import emailQuality.SpellChecker;
+import encryption.Encryption;
 
-import org.languagetool.*;
-import org.languagetool.language.BritishEnglish;
-import org.languagetool.rules.*;
 
 public class Main {
 
   private static Logger logger = Logger.getLogger(Main.class);
-
+  private static Scanner input = new Scanner(new BufferedInputStream(System.in));
 
   /**
-   * A main method to run examples.
+   * A main method to run example
    *
    * @param args not used
    */
   public static void main(String[] args) {
 	  
-	  JLanguageTool langTool = new JLanguageTool(new BritishEnglish());
+	 EmailGenerationSystem gen = new EmailGenerationSystem();
 	  
-	  //Remove this loop to do more than spelling
-	  for (Rule rule : langTool.getAllRules()) {
-	    if (!rule.isDictionaryBasedSpellingRule()) {
-	      langTool.disableRule(rule.getId());
-	    }
-	  }
-	  List<RuleMatch> matches = null;
-	try {
-		matches = langTool.check("A speling eror");
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	  for (RuleMatch match : matches) {
-	    System.out.println("Potential typo at characters " +
-	        match.getFromPos() + "-" + match.getToPos() + ": " +
-	        match.getMessage());
-	    System.out.println("Suggested correction(s): " +
-	        match.getSuggestedReplacements());
-	  }
-
-    // This configuration is for setting up the log4j properties file.
-    // It is better to set this using java program arguments.
-    // PropertyConfigurator.configure("log4j.properties");
-
-    // Let us create an object of the Main class.
-	/*
-	 * Main m = new Main();
-	 * 
-	 * logger.info(m.doIt());
-	 * 
-	 * logger.trace("Trace Message!"); logger.debug("Debug Message!");
-	 * logger.info("Info Message!"); logger.warn("Warn Message!");
-	 * logger.error("Error Message!"); logger.fatal("Fatal Message!");
-	 */
-
+	 Customer customer = null;
+	 System.out.println("What Customer are you emailing?\nBusiness, Frequent, New, Returning, VIP?");
+	 String choice = input.nextLine();
+	 customer = chooseCustomer(choice);
+	 System.out.println("What is your name?");
+	 String senderName = input.nextLine();
+	 System.out.println("Type your message, for new lines, press enter. Press enter twice to finish.");
+	 String body = input.nextLine();
+	 while(input.hasNextLine()) {
+		 String line = input.nextLine();
+		 if(line.isBlank()) break;
+		 body += "\n" + line;
+	 }
+	 body = spellCheck(body);
+	 
+	 String email = gen.generateEmail(customer, body, senderName);
+	 System.out.println("Current email:\n" + email + "\n");
+	 System.out.println("Do you wish to encrypt? y/n");
+	 input.reset();
+	 choice = input.nextLine();
+	 byte[] finalEmail = null;
+	 if(choice.equals("y")) {
+		 finalEmail = Encryption.EncryptString(email);
+		 System.out.println("Email has been encrypted");
+	 }
+	 else {
+		 finalEmail = email.getBytes();
+	 }
+	 
+	 System.out.println("Email is ready for sending");
+	 input.close();
   }//end of main
+  
+  public static Customer chooseCustomer(String choice) {
+	  	 if(choice.equals("Business")) {
+			 return new BusinessCustomer();
+		 }
+		 else if(choice.equals("Frequent")) {
+			 return new FrequentCustomer();
+		 }
+		 else if(choice.equals("VIP")) {
+			 return new VIPcustomer();
+		 }
+		 else if(choice.equals("Returning")) {
+			 return new ReturningCustomer();
+		 }
+		 else if(choice.equals("New")) {
+			 return new NewCustomer();
+		 }
+		 else {
+			 return new BusinessCustomer();
+		 }
+  }
+  
+  public static String spellCheck(String string) {
+	  
+	  System.out.println("SpellChecking...");
+	  if(!SpellChecker.isSpellChecked(string)) {
+		  System.out.println("Do you wish to edit? y/n");
+		  String choice = input.nextLine();
+		  if(choice == "y") {
+			  System.out.println("Current message: " + string + "\nType new message below");
+			  return spellCheck(string);
+		  }
+		  else return string;
+	  }
+	  return string;
+  }
+  
+  
 
 }

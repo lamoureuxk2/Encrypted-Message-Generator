@@ -6,6 +6,12 @@ public abstract class Customer {
 	private String lastName;
 	private String emailAddress;
 	
+	public Customer() {
+		firstName = "firstName";
+		lastName = "lastName";
+		emailAddress = "default@example.com";
+	}
+	
 	public Customer(String fName, String lName, String emailAddr) {
 		firstName = fName; lastName = lName; emailAddress = emailAddr;
 	}
