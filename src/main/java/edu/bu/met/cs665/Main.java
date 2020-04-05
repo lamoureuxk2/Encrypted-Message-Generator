@@ -31,12 +31,7 @@ public class Main {
 	 System.out.println("What is your name?");
 	 String senderName = input.nextLine();
 	 System.out.println("Type your message, for new lines, press enter. Press enter twice to finish.");
-	 String body = input.nextLine();
-	 while(input.hasNextLine()) {
-		 String line = input.nextLine();
-		 if(line.isBlank()) break;
-		 body += "\n" + line;
-	 }
+	 String body = readMultipleLinesFromUser();
 	 body = spellCheck(body);
 	 
 	 String email = gen.generateEmail(customer, body, senderName);
@@ -82,17 +77,32 @@ public class Main {
 	  
 	  System.out.println("SpellChecking...");
 	  if(!SpellChecker.isSpellChecked(string)) {
+		  SpellChecker.spellCheck(string);
 		  System.out.println("Do you wish to edit? y/n");
+		  input.reset();
 		  String choice = input.nextLine();
-		  if(choice == "y") {
-			  System.out.println("Current message: " + string + "\nType new message below");
+		  if(choice.equals("y")) {
+			  System.out.println("Current message:\n" + string + "\nType new message below");
+			  string = readMultipleLinesFromUser();
 			  return spellCheck(string);
 		  }
 		  else return string;
 	  }
-	  return string;
+	  else {
+		  System.out.println("No spelling mistakes.");
+		  return string;
+	  }
   }
   
+  private static String readMultipleLinesFromUser() {
+	  String string = input.nextLine();
+	  while(input.hasNextLine()) {
+			 String line = input.nextLine();
+			 if(line.isBlank()) break;
+			 string += "\n" + line;
+	  }
+	  return string;
+  }
   
 
 }
