@@ -12,7 +12,6 @@ import encryption.Encryption;
 
 public class Main {
 
-  private static Logger logger = Logger.getLogger(Main.class);
   private static Scanner input = new Scanner(new BufferedInputStream(System.in));
 
   /**
