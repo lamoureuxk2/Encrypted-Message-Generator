@@ -1,11 +1,10 @@
 package edu.bu.met.cs665;
 
 import static org.junit.Assert.*;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import encryption.Encryption;
+import emailQuality.SpellChecker;
 
 public class TestApp {
 	
@@ -14,6 +13,17 @@ public class TestApp {
 	@Before
 	public void initialize() {
 		gen = new EmailGenerationSystem();
+	}
+	
+	
+	
+	@Test
+	public void testSpellCheck() {
+		String correctString = "This is a correct String.\nThis should pass spell check.";
+		String incorrectString = "tihs is an icnorect Stwing.\nNo pas tset.";
+		
+		assertTrue(SpellChecker.isSpellChecked(correctString));
+		assertFalse(SpellChecker.isSpellChecked(incorrectString));
 	}
 
 	@Test
