@@ -4,6 +4,7 @@ import java.io.*;
 import java.security.*;
 
 /**
+ * Run the main to generate a public key file and private key file
  * Much code was directly used from tutorial on java encryption 
  * https://www.tutorialspoint.com/java_cryptography/java_cryptography_decrypting_data.htm
  * @author lamoureuxk

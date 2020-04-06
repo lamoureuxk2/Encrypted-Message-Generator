@@ -1,5 +1,10 @@
 package customer;
 
+/**
+ * A customer is represented by 3 strings and has methods for accessing those strings
+ * @author lamoureuxk
+ *
+ */
 public abstract class Customer {
 
 	private String firstName;

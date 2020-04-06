@@ -5,6 +5,12 @@ import javax.crypto.*;
 import java.io.*;
 
 /**
+ * Contains a method for encrypting a string into a byte[] and 
+ * decrypting a byte[] back to a string.
+ * This class depends on the keys created by KeyGenerator.main()
+ * 
+ * The main() in this class just tests the methods.
+ * 
  * Much code was directly used from tutorial on java encryption 
  * https://www.tutorialspoint.com/java_cryptography/java_cryptography_decrypting_data.htm
  * @author lamoureuxk

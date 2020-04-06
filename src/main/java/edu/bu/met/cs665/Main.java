@@ -23,6 +23,7 @@ public class Main {
 	  
 	 EmailGenerationSystem gen = new EmailGenerationSystem();
 	  
+	 //get customer, body, and sender from user
 	 Customer customer = null;
 	 System.out.println("What Customer are you emailing?\nBusiness, Frequent, New, Returning, VIP?");
 	 String choice = input.nextLine();
@@ -31,14 +32,22 @@ public class Main {
 	 String senderName = input.nextLine();
 	 System.out.println("Type your message, for new lines, press enter. Press enter twice to finish.");
 	 String body = readMultipleLinesFromUser();
+	 
+	 //run body through spellcheck
 	 body = spellCheck(body);
 	 
 	 String email = gen.generateEmail(customer, body, senderName);
+	 
+	 
 	 System.out.println("Current email:\n" + email + "\n");
 	 System.out.println("Do you wish to encrypt? y/n");
 	 input.reset();
 	 choice = input.nextLine();
+	 
+	 //final email, whether it ends up encrypted or not, is the final message that is ready to send
 	 byte[] finalEmail = null;
+	 
+	 //Choose to encrypt or not
 	 if(choice.equals("y")) {
 		 finalEmail = Encryption.EncryptString(email);
 		 System.out.println("Email has been encrypted");
@@ -51,6 +60,11 @@ public class Main {
 	 input.close();
   }//end of main
   
+  /**
+   * return instance of customer subclass based on choice
+   * @param choice type of customer
+   * @return
+   */
   public static Customer chooseCustomer(String choice) {
 	  	 if(choice.equals("Business")) {
 			 return new BusinessCustomer();
@@ -72,6 +86,11 @@ public class Main {
 		 }
   }
   
+  /**
+   * If there are spelling mistakes, user has choice of editing the string.
+   * @param string to spell check
+   * @return
+   */
   public static String spellCheck(String string) {
 	  
 	  System.out.println("SpellChecking...");
