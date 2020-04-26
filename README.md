@@ -1,4 +1,8 @@
-# Implementation Description
+# Refactoring
+
+
+
+# Implementation Description (Pre refactoring)
 
 This application will generate emails with a unique template for 5 different categories of customer: Business; VIP; Returning; Frequest; and New. One class: EmailGenerationSystem, will function as an abstract factory that can create custom emails that are different depending on what subclass of customer they are going to. Each there will be one version of the method for generating emails per subclass of customer.
 
