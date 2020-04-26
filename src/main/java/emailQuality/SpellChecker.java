@@ -53,11 +53,14 @@ public class SpellChecker {
 		}
 		
 		  for (RuleMatch match : matches) {
-		    System.out.println("Potential typo at characters " +
-		        match.getFromPos() + "-" + match.getToPos() + ": " +
-		        match.getMessage());
-		    System.out.println("Suggested correction(s): " +
-		        match.getSuggestedReplacements());
+			String spellingErrorMessage = "Potential typo at characters " +
+			        match.getFromPos() + "-" + match.getToPos() + ": " +
+			        match.getMessage();
+			String suggestedCorrectionsMessage = "Suggested correction(s): " +
+			        match.getSuggestedReplacements();
+			
+		    System.out.println(spellingErrorMessage);
+		    System.out.println(suggestedCorrectionsMessage);
 		    
 		  }
 		  if(matches == null || matches.isEmpty()) {

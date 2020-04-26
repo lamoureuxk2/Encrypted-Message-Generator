@@ -1,7 +1,6 @@
 package emailGeneration;
 
 import customer.*;
-import encryption.Encryption;
 
 public class EmailGenerationSystem {
 
