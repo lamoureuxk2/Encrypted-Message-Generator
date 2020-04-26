@@ -23,7 +23,7 @@ public class EmailGenerationSystem {
 		else if( c.getType().equals("Returning")) return this.genReturningEmail(body, name);
 		else if( c.getType().equals("VIP")) return this.genVipEmail(body, name);
 		else return this.genBusinessEmail(body, name);
-	}
+	} 
 	
 	public String genBusinessEmail(String body, String name) {
 		return BUSINESS_HEADER + body + "\n\n" + BUSINESS_FOOTER + name;
