@@ -1,6 +1,10 @@
 # Refactoring
 
+Replace Subclass with Type Code: The various subclasses of Customer had no attributes or methods, and were only used to identify the type of customer. Thus the subclasses were deemed unnecessary and removed, and a string for type was added into the Customer class, which is now no longer an abstract class.
 
+Introduce explaining variable: The messages to the user in SpellChecker for spelling corrections were very long, and potentially developers may wish to modify the outputs. To increase readability of this part of the code, the messages were, instead of being constructed and immediately passed to the println method, stored in variables with explanatory names.
+
+Split temporary variable:  In the main method for generating an email, a string choice was overused: it was used for various user inputs in different steps of the process.  I split it into separate variables; one for each process.
 
 # Implementation Description (Pre refactoring)
 
