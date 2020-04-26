@@ -26,8 +26,8 @@ public class Main {
 	 //get customer, body, and sender from user
 	 Customer customer = null;
 	 System.out.println("What Customer are you emailing?\nBusiness, Frequent, New, Returning, VIP?");
-	 String choice = input.nextLine();
-	 customer = chooseCustomer(choice);
+	 String customerType = input.nextLine();
+	 customer = chooseCustomer(customerType);
 	 System.out.println("What is your name?");
 	 String senderName = input.nextLine();
 	 System.out.println("Type your message, for new lines, press enter. Press enter twice to finish.");
@@ -42,13 +42,13 @@ public class Main {
 	 System.out.println("Current email:\n" + email + "\n");
 	 System.out.println("Do you wish to encrypt? y/n");
 	 input.reset();
-	 choice = input.nextLine();
+	 String willEncrypt = input.nextLine();
 	 
 	 //final email, whether it ends up encrypted or not, is the final message that is ready to send
 	 byte[] finalEmail = null;
 	 
 	 //Choose to encrypt or not
-	 if(choice.equals("y")) {
+	 if(willEncrypt.equals("y")) {
 		 finalEmail = Encryption.EncryptString(email);
 		 System.out.println("Email has been encrypted");
 	 }
