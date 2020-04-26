@@ -5,20 +5,22 @@ package customer;
  * @author lamoureuxk
  *
  */
-public abstract class Customer {
+public class Customer {
 
 	private String firstName;
 	private String lastName;
 	private String emailAddress;
+	private String type;
 	
-	public Customer() {
+	public Customer(String type) {
 		firstName = "firstName";
 		lastName = "lastName";
 		emailAddress = "default@example.com";
+		this.type = type;
 	}
 	
-	public Customer(String fName, String lName, String emailAddr) {
-		firstName = fName; lastName = lName; emailAddress = emailAddr;
+	public Customer(String type, String fName, String lName, String emailAddr) {
+		firstName = fName; lastName = lName; emailAddress = emailAddr; this.type = type;
 	}
 	
 	public String getFullName() { return firstName + " " + lastName; }
@@ -43,6 +45,14 @@ public abstract class Customer {
 	}
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	

@@ -17,11 +17,11 @@ public class EmailGenerationSystem {
 	public final String RETURNING_FOOTER = "Thank you for your business,\n";
 	
 	public String generateEmail(Customer c, String body, String name) {
-		if( c instanceof BusinessCustomer) return this.genBusinessEmail(body, name);
-		else if( c instanceof NewCustomer ) return this.genNewCustomerEmail(body, name);
-		else if( c instanceof FrequentCustomer ) return this.genFrequentEmail(body, name);
-		else if( c instanceof ReturningCustomer ) return this.genReturningEmail(body, name);
-		else if( c instanceof VIPcustomer ) return this.genVipEmail(body, name);
+		if( c.getType().equals("Business")) return this.genBusinessEmail(body, name);
+		else if( c.getType().equals("New")) return this.genNewCustomerEmail(body, name);
+		else if( c.getType().equals("Frequent")) return this.genFrequentEmail(body, name);
+		else if( c.getType().equals("Returning")) return this.genReturningEmail(body, name);
+		else if( c.getType().equals("VIP")) return this.genVipEmail(body, name);
 		else return this.genBusinessEmail(body, name);
 	}
 	

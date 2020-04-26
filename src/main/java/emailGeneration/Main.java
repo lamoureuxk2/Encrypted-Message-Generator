@@ -67,22 +67,22 @@ public class Main {
    */
   public static Customer chooseCustomer(String choice) {
 	  	 if(choice.equals("Business")) {
-			 return new BusinessCustomer();
+			 return new Customer("Business");
 		 }
 		 else if(choice.equals("Frequent")) {
-			 return new FrequentCustomer();
+			 return new Customer("Frequent");
 		 }
 		 else if(choice.equals("VIP")) {
-			 return new VIPcustomer();
+			 return new Customer("VIP");
 		 }
 		 else if(choice.equals("Returning")) {
-			 return new ReturningCustomer();
+			 return new Customer("Returning");
 		 }
 		 else if(choice.equals("New")) {
-			 return new NewCustomer();
+			 return new Customer("New");
 		 }
 		 else {
-			 return new BusinessCustomer();
+			 return new Customer("Business");
 		 }
   }
   
