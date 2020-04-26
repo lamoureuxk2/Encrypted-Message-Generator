@@ -1,4 +1,4 @@
-package edu.bu.met.cs665;
+package emailGeneration;
 
 import customer.*;
 import encryption.Encryption;

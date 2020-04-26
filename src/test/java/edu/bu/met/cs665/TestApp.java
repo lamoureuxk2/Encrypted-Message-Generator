@@ -6,6 +6,7 @@ import org.junit.Test;
 import encryption.Encryption;
 import emailQuality.SpellChecker;
 import customer.*;
+import emailGeneration.EmailGenerationSystem;
 
 public class TestApp {
 	

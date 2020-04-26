@@ -1,4 +1,4 @@
-package edu.bu.met.cs665;
+package emailGeneration;
 
 import org.apache.log4j.Logger;
 
